@@ -1,0 +1,60 @@
+import sys
+print(r'''
+*******************************************************************************
+         |                   |                  |                     |
+_________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+         |                `"=._o`"=._      _`"=._                     |
+_________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+         |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+_________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
+|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.")
+
+
+print("You're alone in a dark, freezing forest. Dimly lit by the moonlight, you can make out a trail that splits at the end.")
+print()
+trail = input("You can choose between left and right. Which one do you choose? ").strip().lower()
+if trail == "left":
+   print("You followed the trail, pushing past branches and startling a few small wild animals, until you reached a river.")
+else:
+   print("Because of the poor lighting, you couldn’t see anything, only the sensation of your body being pulled down by gravity and the sound of it crashing against the floor at the bottom of the hole.")
+   print("Game over.")
+   sys.exit()
+print()
+river = input("Something feels off. At the river, you see a line of small rocks leading to the other side. You can try crossing them... or wait. What do you choose? ").lower()
+if river == "wait":
+   print("You chose to wait. While standing there, your eyes wandered through the shadows, searching for another way. That’s when you noticed a glint of metal. A door handle.")
+else:
+   print("You chose to risk crossing to the other side by stepping on the small rocks. But they were far too slippery and you cracked your head open in them.")
+   print("Game over.")
+   sys.exit()
+print()
+
+
+print("You enter the cabin hidden among the trees. Looking around, you notice three more doors: one red, one yellow, and one blue.")
+doors = input("Which one do you decide going in first? ").lower()
+print()
+if doors == "yellow":
+   print("As you step into the new room, a shining gold chest filled with incredible treasures catches your eye. You win. For now.")
+elif doors == "red":
+   print("When you opened the door, you saw a silhouette sitting in a chair in the dark. Your brain couldn't even readjust the lighting when something sharp was thrown against your chest.")
+   print("Game over.")
+   sys.exit()
+else:
+   print("You approach the blue door and slowly turn the handle. Before you can react, something drags you into the room, and silence falls. Only the darkness remains, hearing the faint sound of something chewing on what once was you.")
+   print("Game over.")
+   sys.exit()
