@@ -1,0 +1,64 @@
+import random
+print("Boas vindas ao gerador de nomes para sua futura empresa!")
+print()
+print("Antes de tudo, o primeiro passo ao criar uma nova empresa, é determinar o que será produzido e comercializado.")
+#Palavras dos setores
+palavras_automobilistico = ["Auto", "Drive", "Mob", "Car", "Motion"]
+palavras_energia = ["Volt", "Ergy", "Watt", "Sun", "Bio", "Green"]
+palavras_farmacia = ["Pharma", "Lab", "Gen", "Med", "Mol", "Care", "Health"]
+palavras_construcao = ["build", "struct", "Haus", " Engenharia"]
+palavras_tech = ["Tech", "net", "data", "bit", "ware", "sys", "Core", 'byte']
+palavras_agro = ["agro", "farm", "soil", "crop", "field"]
+palavras_aviacao = ["air", "jet", "fly", "aero", "sky"]
+palavras_alimentos = ["food", "taste", "meal", "chef","bite"]
+palavras_petrofilia = ["petro", "oil", "gas", "drill", 'fuel']
+palavras_metalurgica = ['metal', 'steel', 'forge', 'iron', 'tec']
+palavras_outros = ['hub', 'base', 'up','studio','zone', 'line', 'way']
+
+
+#Setores
+setores = {
+   "1. Automobilística": palavras_automobilistico,
+   "2. Energética": palavras_energia,
+   "3. Farmacêutica & Química": palavras_farmacia,
+   "4. Construção Civil": palavras_construcao,
+   "5. Tecnologia da informação e comunicação": palavras_tech,
+   "6. Agroindústria": palavras_agro,
+   "7. Aviação": palavras_aviacao,
+   "8. Alimentícia": palavras_alimentos,
+   "9. Petróleo e Gás": palavras_petrofilia,
+   "10. Metalúrgicae e Siderúrgica": palavras_metalurgica,
+   "11. Outro": palavras_outros
+}
+# Novo dicionário com chave numérica
+mapa_numerico = {
+   1: "Automobilística",
+   2: "Energética",
+   3: "Farmacêutica & Química",
+   4: "Construção Civil",
+   5: "Tecnologia da informação e comunicação",
+   6: "Agroindústria",
+   7: "Aviação",
+   8: "Alimentícia",
+   9: "Petróleo e Gás",
+   10: "Metalúrgica e Siderúrgica",
+   11: "Outro"
+}
+print("Escolha um que corresponde à finalidade da sua empresa:")
+for numero, nome in mapa_numerico.items():
+   print(f"{numero}: {nome}")
+print()
+escolha = int(input("Digite o número do setor: "))
+nome_chave_setor = f"{escolha}. {mapa_numerico.get(escolha)}"
+palavras_escolhidas = setores.get(nome_chave_setor)
+print(f"\nVocê escolheu o setor: {nome_chave_setor}")
+print()
+nome2 = input("Você tem alguma palavra em mente para colocar na sua empresa? (Ex: seu sobrenome, substantivo, adjetivo...) ").capitalize()
+if palavras_escolhidas:
+   palavra_randomica = random.choice(palavras_escolhidas).capitalize()
+   print(f"\nNome sugerido para sua empresa:\n{nome2.capitalize() + palavra_randomica}")
+else:
+   print("Erro: não foi possível encontrar o setor selecionado.")
+if escolha not in mapa_numerico:
+   print("Número inválido! Escolha um número de 1 a 11.")
+   exit()
