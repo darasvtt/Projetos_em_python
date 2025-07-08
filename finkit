@@ -1,0 +1,124 @@
+print("💵 Boas vindas ao FinKit, seu kit de sobrevivência financeira!")
+print("Esse programa oferece algumas funções para te ajudar a entender o básico de uma boa estabilidade financeira. Aqui, existe algumas opções:")
+
+
+
+
+def calcular_imposto(renda_mensal: float) -> float:
+   if renda_mensal <= 2259.20:
+       print("Você está isento de pagar esse ano!")
+       return 0.0
+   elif renda_mensal <= 2826.65:
+       return renda_mensal * 0.075 - 169.44
+   elif renda_mensal <= 3751.05:
+       return renda_mensal * 0.15 - 381.44
+   elif renda_mensal <= 4664.68:
+       return renda_mensal * 0.225 - 662.77
+   else:
+       return renda_mensal * 0.275 - 896.0
+
+
+precisa_declarar = False
+#=================renda anual ==========================
+renda = float(input("Qual foi sua renda anual no ano passado? R$"))
+renda_mensal = renda / 12
+if renda > 33888:
+   print("Sim! Você é obrigado a declarar o IR desse ano!")
+   precisa_declarar = True
+
+
+#==================investimentos ========================
+investimentos = input("Você investe na bolsas de valores? (sim/não) ").lower()
+if investimentos == "sim":
+   venda_de_acao = (input("Vendeu alguma ação? (sim/não) ")).lower()
+   if venda_de_acao == "sim":
+       lucro = float(input("Qual foi o total vendido? R$"))
+       if lucro > 40000:
+           print("Sim, você deve declarar por ter vendido mais de R$40.000 em ações.")
+           precisa_declarar = True
+       else:
+           lucro2 = float(input("Qual foi o lucro total com a venda de ações? R$ "))
+           if lucro2 > 0:
+               print("Sim, você deve declarar por ter obtido lucro tributável.")
+               precisa_declarar = True
+           else:
+               print("Não precisa declarar por investimentos.")
+   else:
+       print("Sem vendas de ações, provavelmente não precisa declarar por investimentos.")
+
+
+#==============outros investimentos ===================
+rend_isentos = input("Recebeu rendimentos isentos ou não tributáveis? (sim/não) ").lower()
+if rend_isentos == "sim":
+   total = float(input("Qual foi o total que você recebeu? R$"))
+   if total > 200000:
+       print("Sim, você precisa declarar o imposto de renda!")
+       precisa_declarar = True
+
+
+#===============investimentos no exterior ==============
+exterior = input("Você possui algum investimento fora do Brasil? (sim/não) ").lower()
+if exterior == "sim":
+   print("Sim, você precisa declarar o imposto de renda!")
+   precisa_declarar = True
+
+
+#=============== bens ================================
+bens = input("Você possui bens ou propriedades que valem R$800.000 acumulados? (sim/não) ").lower()
+if bens == "sim":
+   print("Sim, você precisa declarar o imposto de renda!")
+   precisa_declarar = True
+venda_de_bens = input("Você vendeu algum bem e obteve lucro tributável? (sim/não) ").lower()
+if venda_de_bens == "sim":
+   print("Sim, você precisa declarar o imposto de renda!")
+   precisa_declarar = True
+
+
+#=============== imóvel vendido com isenção (reinvestimento em até 180 dias) ===============
+imovel = input("Você vendeu um imóvel e comprou outro com o valor em até 180 dias para isenção de imposto? (sim/não) ").lower()
+if imovel == "sim":
+   print("Sim, você precisa declarar a operação, mesmo com isenção do imposto.")
+   precisa_declarar = True
+
+
+#============== mudança ========================
+mudanca = input("Você se mudou para o Brasil e estava aqui em 31 de dezembro do ano passado? (sim/não) ").lower()
+if mudanca == "sim":
+   print("Sim, você precisa declarar o imposto de renda!")
+   precisa_declarar = True
+
+
+#============ atividade rural ====================
+rural = input("Você fez alguma movimentação em atividades rurais? (sim/não) ").lower()
+if rural == "sim":
+   ganho_rural = float(input("Qual foi o seu ganho? R$"))
+   if ganho_rural > 169440:
+       print("Sim, você precisa declarar o imposto de renda!")
+       precisa_declarar = True
+
+
+   compensacao = input("Você quer compensar prejuízo de anos anteriores? (sim/não) ").lower()
+   if compensacao == "sim":
+       print("Sim, você precisa declarar o imposto de renda!")
+       precisa_declarar = True
+
+
+#============ atualizações de imoveis ==============
+atualizar = input("Você atualizou o valor de algum imovél pagando um imposto em dezembro do ano passado? (sim/não) ").lower()
+if atualizar == "sim":
+   print("Sim, você precisa declarar o imposto de renda!")
+   precisa_declarar = True
+
+
+#============== MENSAGEM FINAL =====================
+
+
+if precisa_declarar:
+   imposto_mensal = calcular_imposto(renda_mensal)
+   imposto_anual = imposto_mensal * 12
+   print(f'Seu imposto mensal estimado é R${imposto_mensal:.2f}')
+   print(f"Seu imposto anual estimado é R${imposto_anual:.2f}")
+
+
+if not precisa_declarar:
+   print("Com base nas informações fornecidas, você provavelmente NÃO precisa declarar o imposto de renda. Está livre do leão dessa vez! 😮‍💨")
