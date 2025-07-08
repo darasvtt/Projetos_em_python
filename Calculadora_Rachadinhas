@@ -1,0 +1,49 @@
+print(" Boas vindas à Calculadora de Rachadinhas!")
+print()
+print("Aqui, você pode escolher dois modos de divisão de contas!")
+print("1 - Modo igualitária")
+print("2 - Modo proporcional (quem comeu mais, paga mais)")
+print()
+modos = input("Escolha entre 1 ou 2: ")
+conta = float(input("Qual foi o total da conta a pagar? R$"))
+
+
+#===========Modo Igualitário==========
+if modos == "1":
+   pessoas = int(input("Quantas pessoas vão dividir a conta?"))
+   valor_de_cada = conta / pessoas
+   print(f"\n💵 Cada pessoa irá pagar: R${valor_de_cada:.2f}")
+
+
+#============Modo proporcional==========
+elif modos == "2":
+   pessoas = int(input("Qual o total de pessoas? "))
+   consumos = []
+   soma_consumo = 0
+
+
+   print("\n🧾Informe quanto foi o consumo de cada pessoa:")
+   for i in range(pessoas):
+       valor = float(input(f"Pessoa {i+1}: R$"))
+       consumos.append(valor)
+       soma_consumo += valor
+   print("\n🪙 Divisão Proporcional:")
+   valor_igualitario = conta / pessoas
+
+
+   for i in range(pessoas):
+       proporcao = consumos [i] / soma_consumo
+       valor_pagar = proporcao * conta
+       diferenca = valor_igualitario - valor_pagar
+
+
+       if diferenca > 0:
+           print(f"  Pessoa {i + 1}: R${valor_pagar:.2f} (🤑 Economizou R${diferenca:.2f})")
+       elif diferenca < 0:
+           print(f"  Pessoa {i + 1}: R${valor_pagar:.2f} (😣 Pagou R${-diferenca:.2f} a mais)")
+       else:
+           print(f"  Pessoa {i + 1}: R${valor_pagar:.2f} (⚖️ Pagou exatamente o valor médio)")
+
+
+else:
+   print('❌ Opção inválida. Tente novamente.')
