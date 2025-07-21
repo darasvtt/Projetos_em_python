@@ -1,0 +1,85 @@
+import random
+choice = input("Choose between rock, paper or scissor: ").lower()
+if choice == "rock":
+    print('''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''')
+    print(f"You chose {choice}")
+elif choice == "paper":
+    print('''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+''')
+    print(f"You chose {choice}")
+elif choice == "scissor":
+    print('''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+''')
+    print(f"You chose {choice}")
+else:
+    print("Invalid. Choose one of the options above.")
+print()
+
+
+minigame = ["rock", "paper", "scissor"]
+computer = (random.choice(minigame))
+
+if computer == "rock":
+    print('''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''')
+    print(f"The computer chose {computer}")
+
+elif computer == "paper":
+    print('''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+''')
+    print(f"The computer chose {computer}")
+
+elif computer == "scissors":
+    print('''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+''')
+    print(f"The computer chose {computer}")
+
+win_conditions = {
+    "rock": "scissor",
+    "scissor": "paper",
+    "paper": "rock"
+}
+
+if choice == computer:
+    print("That's a draw! Try again.")
+elif win_conditions[choice] == computer:
+    print("You win!")
+else:
+    print("You lose! Try again.")
