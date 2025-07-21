@@ -1,0 +1,48 @@
+
+def add(n1, n2):
+    return n1 + n2
+
+def sub(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    return n1 / n2
+
+operations = {
+    "+": add,
+    "-": sub,
+    "*": multiply,
+    "/": divide
+}
+
+previous_result = None
+
+while True:
+    if previous_result is not None:
+        can_continue = input("Want to use the previous result?").lower()
+        if can_continue == "yes":
+            n1 = previous_result
+        else:
+            n1 = int(input("What's the first number?"))
+            previous_result = None
+    else:
+        n1 = int(input("What's the first number?"))
+
+    operator = input("What operation do you want to do? (+, -, *, /): ")
+
+    if operator not in operations:
+        print("Invalid operator.")
+        continue
+
+    n2 = int(input("What's your second number? "))
+
+    try:
+        result = operations[operator](n1, n2)
+        print("The result is:", result)
+        previous_result = result
+    except ZeroDivisionError:
+        print("You can't divide by zero.")
+        continue
