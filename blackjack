@@ -1,0 +1,80 @@
+import random
+from art import logo
+
+# Baralho
+cartas = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+# Sorteia uma carta
+def escolher_carta():
+    return random.choice(cartas)
+
+# Calcula pontuação da mão
+def calcular_pontuacao(mao):
+    if sum(mao) == 21 and len(mao) == 2:
+        return 0  # BlackJack
+    if 11 in mao and sum(mao) > 21:
+        mao.remove(11)
+        mao.append(1)
+    return sum(mao)
+
+# Compara resultados
+def comparar(u_score, c_score):
+    if u_score == c_score:
+        return "É um empate!"
+    elif c_score == 0:
+        return "Você perdeu, o adversário fez um BlackJack."
+    elif u_score == 0:
+        return "Você ganhou, fez um BlackJack!"
+    elif u_score > 21:
+        return "Você perdeu, possui mais de 21 pontos na sua mão!"
+    elif c_score > 21:
+        return "Você ganhou, o adversário pontuou mais que 21 pontos!"
+    elif u_score > c_score:
+        return "Você ganhou!"
+    else:
+        return "Você perdeu..."
+
+# Função principal do jogo
+def jogo():
+    print(logo)
+
+    u_cartas = []
+    c_cartas = []
+    game_over = False
+
+    # Distribuir cartas iniciais
+    for _ in range(2):
+        u_cartas.append(escolher_carta())
+        c_cartas.append(escolher_carta())
+
+    while not game_over:
+        user_score = calcular_pontuacao(u_cartas)
+        computer_score = calcular_pontuacao(c_cartas)
+
+        print(f"Suas cartas: {u_cartas}, pontuação atual: {user_score}")
+        print(f"Primeira carta do adversário: {c_cartas[0]}")
+
+        if user_score == 0 or computer_score == 0 or user_score > 21:
+            game_over = True
+        else:
+            user_should_deal = input("Digite 'y' para comprar mais uma carta ou 'n' para parar: ")
+            if user_should_deal == "y":
+                u_cartas.append(escolher_carta())
+            else:
+                game_over = True
+
+    # Vez do computador
+    while calcular_pontuacao(c_cartas) != 0 and calcular_pontuacao(c_cartas) < 17:
+        c_cartas.append(escolher_carta())
+
+    user_score = calcular_pontuacao(u_cartas)
+    computer_score = calcular_pontuacao(c_cartas)
+
+    print(f"\nSua mão final: {u_cartas}, pontuação final: {user_score}")
+    print(f"Mão final do adversário: {c_cartas}, pontuação final: {computer_score}")
+    print(comparar(user_score, computer_score))
+
+# Loop principal do jogo
+while input("Quer jogar Blackjack? Digite 's' para sim ou qualquer outra tecla para sair: ") == "s":
+    print("\n" * 20)
+    jogo()
